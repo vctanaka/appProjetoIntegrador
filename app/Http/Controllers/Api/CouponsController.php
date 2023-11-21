@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Models\Coupons;
 use App\Http\Controllers\Controller;
+use Exception;
 
 class CouponsController extends Controller
 {
@@ -13,8 +14,8 @@ class CouponsController extends Controller
         try{
             $coupons = Coupons::all();
             return response()->json($coupons);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -24,8 +25,8 @@ class CouponsController extends Controller
             $coupons = Coupons::findOrFail($id);
 
             return response()->json($coupons);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -43,8 +44,8 @@ class CouponsController extends Controller
             $coupons->save();
 
             return response()->json($coupons);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -62,8 +63,8 @@ class CouponsController extends Controller
             $coupons->save();
 
             return response()->json($coupons);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -75,8 +76,8 @@ class CouponsController extends Controller
             $coupons->delete();
 
             return response()->json($coupons);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 

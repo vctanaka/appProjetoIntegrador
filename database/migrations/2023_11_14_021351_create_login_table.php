@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('name');
-            $table->date('birth_date');
+            $table->date('birth_date')->nullable();
             $table->string('skin_type')->nullable();
-            $table->integer('points')->default(0);
+            $table->integer('points')->nullable()->default(0);
             $table->string('recovery_code')->nullable();
             $table->string('recovery_time')->nullable();
             $table->timestamps();

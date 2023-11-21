@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('file')->nullable();
             $table->integer('value');
+            $table->date('day')->nullable();
             $table->timestamps();
         });
     }

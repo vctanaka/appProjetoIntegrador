@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Challenges;
+use Exception;
 
 
 class ChallengesController extends Controller
@@ -14,8 +15,8 @@ class ChallengesController extends Controller
         try{
             $challenges = Challenges::all();
             return response()->json($challenges);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -25,8 +26,8 @@ class ChallengesController extends Controller
             $challenges = Challenges::findOrFail($id);
 
             return response()->json($challenges);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
 
     }
@@ -44,8 +45,8 @@ class ChallengesController extends Controller
             $challenges->save();
 
             return response()->json($challenges);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
 
     }
@@ -63,8 +64,8 @@ class ChallengesController extends Controller
             $challenges->save();
 
             return response()->json($challenges);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -74,8 +75,8 @@ class ChallengesController extends Controller
             $challenges = Challenges::find($id);
             $challenges->delete();
             return response()->json('The challenge has been deleted successfully');
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
     //

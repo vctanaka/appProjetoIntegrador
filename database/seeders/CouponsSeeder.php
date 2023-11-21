@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Coupons;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -77,6 +78,10 @@ class CouponsSeeder extends Seeder
                 'expiration_date' => '2024-11-14',
             ],
         ];
+
+        foreach ($coupons as $coupon) {
+            Coupons::create($coupon);
+        }
         //
     }
 }

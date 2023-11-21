@@ -10,9 +10,12 @@ use App\Http\Controllers\Api\{
 };
 use App\Http\Controllers\ApiCustom\{
     AuthenticatorLoginController,
-    AuthenticatorTokenController,
+    CouponController,
     PointsController,
-    RecoveryPasswordController
+    PointsHistoryController,
+    RecoveryPasswordController,
+    SkinTypeController,
+    WeekMissionsController
 };
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -37,10 +40,23 @@ Route::post('authLogin', [AuthenticatorLoginController::class, 'authenticate']);
 Route::post('sendEmail', [RecoveryPasswordController::class, 'sendEmail']);
 Route::post('recoveryCode', [RecoveryPasswordController::class, 'recoveryCode']);
 Route::post('newPassword', [RecoveryPasswordController::class, 'newPassword']);
+Route::post('register', [AuthenticatorLoginController::class, 'register']);
 
 Route::middleware('auth:sanctum')->group(function(){
-    Route::apiResource('login', LoginController::class);
+    // CUSTOM
+    Route::post('upSkinType', [SkinTypeController::class, 'upSkinType']);
+    Route::post('getSkinType', [SkinTypeController::class, 'getSkinType']);
+    Route::post('getLoginFilter', [AuthenticatorLoginController::class, 'getLoginFilter']);
     Route::post('getPoints', [PointsController::class, 'getPoints']);
+    Route::post('getHistory', [PointsHistoryController::class, 'getHistory']);
+    Route::post('getMissions', [WeekMissionsController::class, 'getWeekMissions']);
+    Route::post('getCoupon', [CouponController::class, 'getCoupon']);
+    Route::post('setCoupon', [CouponController::class, 'setCoupon']);
+
+
+
+    // CRUD
+    Route::apiResource('login', LoginController::class);
     Route::apiResource('challenges', CompletedChallengesController::class);
     Route::apiResource('missions', MissionsController::class);
     Route::apiResource('coupons', CouponsController::class);

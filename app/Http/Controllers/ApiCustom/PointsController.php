@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CompletedChallenges;
 use App\Models\CompletedMissions;
 use App\Models\RedeemedCoupons;
+use Exception;
 
 class PointsController extends Controller
 {

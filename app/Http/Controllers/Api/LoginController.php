@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Login;
 use Illuminate\Http\Request;
+use Exception;
 
 class LoginController extends Controller
 {
@@ -13,8 +14,8 @@ class LoginController extends Controller
         try{
             $login = Login::all();
             return response()->json($login);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -24,8 +25,8 @@ class LoginController extends Controller
             $login = Login::findOrFail($id);
 
             return response()->json($login);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -44,8 +45,8 @@ class LoginController extends Controller
             $login->save();
 
             return response()->json($login);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -64,8 +65,8 @@ class LoginController extends Controller
             $login->save();
 
             return response()->json($login);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -77,8 +78,8 @@ class LoginController extends Controller
             $login->delete();
 
             return response()->json($login);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
     //

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Models\CompletedChallenges;
 use App\Http\Controllers\Controller;
+use Exception;
 
 class CompletedChallengesController extends Controller
 {
@@ -13,8 +14,8 @@ class CompletedChallengesController extends Controller
         try{
             $completedChallenge = CompletedChallenges::all();
             return response()->json($completedChallenge);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -24,8 +25,8 @@ class CompletedChallengesController extends Controller
             $completedChallenge = CompletedChallenges::findOrFail($id);
 
             return response()->json($completedChallenge);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -40,8 +41,8 @@ class CompletedChallengesController extends Controller
             $completedChallenge->save();
 
             return response()->json($completedChallenge);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -56,8 +57,8 @@ class CompletedChallengesController extends Controller
             $completedChallenge->save();
 
             return response()->json($completedChallenge);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -67,8 +68,8 @@ class CompletedChallengesController extends Controller
             $completedChallenge = CompletedChallenges::find($id);
             $completedChallenge->delete();
             return response()->json('The completed_challenge has been deleted successfully');
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 

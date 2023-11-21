@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Models\CompletedMissions;
 use App\Http\Controllers\Controller;
+use Exception;
 
 class CompletedMissionsController extends Controller
 {
@@ -13,8 +14,8 @@ class CompletedMissionsController extends Controller
         try{
             $completedMission = CompletedMissions::all();
             return response()->json($completedMission);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -24,8 +25,8 @@ class CompletedMissionsController extends Controller
             $completedMission = CompletedMissions::findOrFail($id);
 
             return response()->json($completedMission);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -40,8 +41,8 @@ class CompletedMissionsController extends Controller
             $completedMission->save();
 
             return response()->json($completedMission);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -56,8 +57,8 @@ class CompletedMissionsController extends Controller
             $completedMission->save();
 
             return response()->json($completedMission);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -69,8 +70,8 @@ class CompletedMissionsController extends Controller
             $completedMission->delete();
 
             return response()->json('The completed_mission has been deleted successfully');
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\Missions;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Exception;
 
 class MissionsController extends Controller
 {
@@ -13,8 +14,8 @@ class MissionsController extends Controller
         try{
             $missions = Missions::all();
             return response()->json($missions);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -24,8 +25,8 @@ class MissionsController extends Controller
             $missions = Missions::findOrFail($id);
 
             return response()->json($missions);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -42,8 +43,8 @@ class MissionsController extends Controller
             $missions->save();
 
             return response()->json($missions);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -60,8 +61,8 @@ class MissionsController extends Controller
             $missions->save();
 
             return response()->json($missions);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 
@@ -73,8 +74,8 @@ class MissionsController extends Controller
             $missions->delete();
 
             return response()->json($missions);
-        } catch (\Throwable $th) {
-            return response()->json($th,500);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(),500);
         }
     }
 

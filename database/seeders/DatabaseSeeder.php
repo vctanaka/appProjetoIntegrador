@@ -17,6 +17,11 @@ class DatabaseSeeder extends Seeder
             MissionsSeeder::class,
             ChallengesSeeder::class,
             LoginSeeder::class,
+            MissionsCompletedSeeder::class,
+            ChallengesCompletedSeeder::class,
+            CouponsSeeder::class,
+            RedeemedCouponsSeeder::class,
+
         ]);
         // \App\Models\User::factory(10)->create();
 
